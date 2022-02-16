@@ -15,7 +15,7 @@
       https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md#running-in-docker
 
 ## Outline of how this basic demo app currently "works"
-## Pre-requisties
+## Requirements
 - ngrok for creating a publicly accessible route to localhost port that provides the service endpoint of the acapy docker container
 - docker such as docker desktop for windows or mac for running an instance of acapy in a docker container on your local machine
 - nodejs and npm for running the basic nodejs/express controller app (webhook server) on your local machine
