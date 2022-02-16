@@ -44,7 +44,7 @@ app.get( '/start/using/consolelog', async ( req, res ) => {
         'http://localhost:8021/connections/create-invitation?alias=pdub&auto_accept=true',
          {})
     const acapyResult = JSON.parse(acapyRes)
-    qrCode.toString(acapyResult.invitation_url, {type:'terminal', 'small': true, 'scale': 2}, function (err, url) {
+    qrCode.toString(acapyResult.invitation_url, {type:'terminal', 'small': true, 'scale': 1}, function (err, url) {
         console.log(url) })
     // when a user scans this QR code it kicks off a connection
     // the connection is handled through the app.post that follows below
