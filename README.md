@@ -73,7 +73,15 @@
 
 - **Note**: you will have to modify the **endpoint:** value to align with your ngrok setup
 - **Note**: you should change the **label**, **wallet-name**, **wallet-key**
+- In the <docker> folder of <aries-cloudagent-python> modify <dockerfile.run> so that it adds <acapyconfig.yaml> like the following:
 
+            RUN mkdir aries_cloudagent && touch aries_cloudagent/__init__.py
+            ADD aries_cloudagent/version.py aries_cloudagent/version.py
+            ADD bin ./bin
+            ADD README.md ./
+            ADD setup.py ./
+            ADD acapyconfig.yaml ./
+            
 - Use the run_docker script to start acapy. 
 
       PORTS="8020:8020 8021:8021 8022:8022"
