@@ -19,7 +19,7 @@ var proofReq = { "trace": false,
                                           "restrictions": [{ "schema_name": "unverified_person",
                                                               "schema_version": "0.1.0",
                                                               "issuer_did": "9wVuYYDEDtpZ6CYMqSiWop" } ] },
-                        "Province": { "name": "region",
+                        "Region": { "name": "region",
                                       "restrictions": [{ "schema_name": "unverified_person",
                                                           "schema_version": "0.1.0",
                                                           "issuer_did": "9wVuYYDEDtpZ6CYMqSiWop" } ] } },
@@ -92,7 +92,7 @@ app.post( '/topic/present_proof', async ( req, res ) => {
             console.log('<><><><><><>< Success! Verified  ><><><><><><><><>')
             console.log(req.body.presentation.requested_proof.revealed_attrs['Given Names'].raw)
             console.log(req.body.presentation.requested_proof.revealed_attrs['Family Name'].raw)
-            console.log(req.body.presentation.requested_proof.revealed_attrs['Province'].raw)
+            console.log(req.body.presentation.requested_proof.revealed_attrs['Region'].raw)
             console.log('<><><><><><><><><><><><><><><><><><><><><><><><><>')
             break
     }
