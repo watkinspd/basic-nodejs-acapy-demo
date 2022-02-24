@@ -52,7 +52,6 @@
 
             inbound-transport:
             - [http, 0.0.0.0, 8020]
-            - [ws, 0.0.0.0, 8040]
             outbound-transport: http
             endpoint: https://<your ngrok url goes here>
             admin: [0.0.0.0, 8021]
@@ -84,7 +83,7 @@
 
 - Use the run_docker script to start acapy. 
 
-      PORTS="8020:8020 8021:8021 8022:8022"
+      PORTS="8020:8020 8021:8021"
       ./scripts/run_docker start --arg-file ./acapyconfig.yaml
 
 - The PORTS environemnt variable needs to be set correctly so that it is available to the run_docker script. If your container starts but you cannot browse to
