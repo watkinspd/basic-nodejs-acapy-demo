@@ -1,12 +1,13 @@
 # basic-nodejs-acapy-demo
   Most basic demo leveraging hyperledger aries cloud agent python (acapy) using nodejs and express.
 
-## Status: incomplete (very)
-- This current demo code is mostly broken for anyone but me. It's fault in my demo code, it's not acapy.
+## Status: functional
+- Works for me on my Windows 11 setup that includes Windows Subsystem for Linux
+- I run powershell terminals for the nodejs command line portions, and bash terminal for the docker related command line items
 
 ## Before you start
 - Go to
-      
+
       https://github.com/hyperledger/aries-cloudagent-python
 
 - Run the following demos a couple of times until you are comfortable repeating them:
@@ -22,25 +23,27 @@
 
 ## Wallet and Credential
 - Get a wallet app on your smartphone that can work with credentials of issuers that use the CANdy-dev ledger.
+
+      https://apps.apple.com/us/app/bc-wallet/id1587380443
+      https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet
+
 - Get a non-verified person credential that is intended for developers (like you) to test with. Get one from
 
       https://openvp-candy-dev.vonx.io/
 
-- Note: the openvp-candy-dev.vonx.io is an issuer using the CANdy-dev ledger intended for developers to work with. A ledger browser that can provide genesis file is here:
+- Note: the openvp-candy-dev.vonx.io is an issuer using the CANdy-dev ledger intended for developers to work with.
 
-      https://candy-dev.idlab.org/
-  
-  You might need to know this for some of the wallets.
+      https://candyscan.idlab.org/home/CANDY_DEV
 
 ## Expose the service endpoint so you (the holder) can interact
 - Open a new terminal window and use Ngrok to expose port 8020
 
-      ngrok http 8020 
+      ngrok http 8020
 
   Copy the public route url that ngrok generates and paste it into the **endpoint:** of the confguration options below.
 
 ## Run acapy in a docker container on your local machine
-### Clone hyperledger aries cloudagent python. 
+### Clone hyperledger aries cloudagent python.
 
       git clone https://github.com/hyperledger/aries-cloudagent-python.git
 
@@ -81,9 +84,9 @@
             ADD setup.py ./
             ADD acapyconfig.yaml ./
 
-- Use the run_docker script to start acapy. 
+- Use the run_docker script to start acapy.
 
-      PORTS="8020:8020 8021:8021"
+      export PORTS="8020:8020 8021:8021"
       ./scripts/run_docker start --arg-file ./acapyconfig.yaml
 
 - The PORTS environemnt variable needs to be set correctly so that it is available to the run_docker script. If your container starts but you cannot browse to
@@ -93,7 +96,7 @@
   then check to see which ports the container has exposed. It should expose 8020, 8021. If these are not exposed check how you are setting the PORTS envionment variable before you run the run_docker script.
 
 ## Get and run the basic-nodejs-acapy-demo app
-### Clone the nodejs controller app (webhook server) 
+### Clone the nodejs controller app (webhook server)
 
       git clone https://github.com/watkinspd/basic-nodejs-acapy-demo.git
       cd ./basic-nodejs-acapy-demo
