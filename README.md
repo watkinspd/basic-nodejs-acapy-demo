@@ -3,7 +3,6 @@
 
 ## Status: functional
 - Works for me on my Windows 11 setup that includes Windows Subsystem for Linux
-- I run powershell terminals for the command line portions
 
 ## Before you start
 - Go to
