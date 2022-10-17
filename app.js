@@ -28,14 +28,11 @@ const proofReq = { "trace": false,
 
 app.use( express.json() )
 
-// makes a new connection inviation
-// use a curl or browser to http://localhost:9090/start/using/consolelog
+// makes a new connection invitation
+// use curl or browser to http://localhost:9090/start/using/consolelog
 // then check the terminal window running this app for the QR code
 app.get( '/start/using/consolelog', async ( req, res ) => {
     console.log( '-------received /start/using/consolelog --------')
-    console.log('Assumptions:')
-    console.log('1. You have an Aries Wallet on your smartphone using v1.0 connection and proof protocols')
-    console.log('2. You have a Verified Email Credential that you got from https://openvp-candy-dev.vonx.io/')
     console.log('Scan the QR Code with your wallet')
     console.log('You may need to change font, line spacing, resize or adjust the terminal window in order for the QR code to render')
 
