@@ -6,6 +6,7 @@
 ## Status: functional
 
 - Works for me on my Windows 11 setup that includes Windows Subsystem for Linux
+- Works for me on MacOS 12.6
 
 ## Before you start
 
