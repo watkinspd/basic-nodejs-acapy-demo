@@ -4,7 +4,7 @@ const qrCode = require('qrcode')
 const lib = require('./lib')  // pushed some helper functions to a library to reduce code size here
 const postToAcapy = lib.postToAcapy
 
-var proofReq = { "trace": false,
+const proofReq = { "trace": false,
                   "comment": "string",
                   "connection_id": "", // populated on a per-inviation basis
                   "proof_request": {
