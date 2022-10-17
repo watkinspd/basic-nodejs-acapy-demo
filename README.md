@@ -3,7 +3,7 @@
 
 ## Status: functional
 - Works for me on my Windows 11 setup that includes Windows Subsystem for Linux
-- I run powershell terminals for the nodejs command line portions, and bash terminal for the docker related command line items
+- I run powershell terminals for the command line portions
 
 ## Before you start
 - Go to
@@ -84,7 +84,7 @@
             ADD setup.py ./
             ADD acapyconfig.yaml ./
 
-- Use the run_docker script to start acapy.
+- From a bash terminal use the run_docker script to start acapy.
 
       export PORTS="8020:8020 8021:8021"
       ./scripts/run_docker start --arg-file ./acapyconfig.yaml
