@@ -3,6 +3,9 @@ const app = express()
 const qrCode = require('qrcode')
 const lib = require('./lib')  // pushed some helper functions to a library to reduce code size here
 const postToAcapy = lib.postToAcapy
+const app_js_runs_localhost = 'localhost:8021'  
+const app_js_runs_in_docker = 'host.docker.internal:8021'   
+const acapy_hostname = app_js_runs_localhost //change the reference to relect decision to run localhost or in docker container
 
 const proofReq = { "trace": false,
                   "comment": "string",
@@ -38,7 +41,7 @@ app.get( '/start/using/consolelog', async ( req, res ) => {
 
     // create a connection invitation
     const acapyRes = await postToAcapy(
-        'http://localhost:8021/connections/create-invitation?alias=pdub&auto_accept=true',
+        'http://' + acapy_hostname + '/connections/create-invitation?alias=pdub&auto_accept=true',
          {})
     const acapyResult = JSON.parse(acapyRes)
     qrCode.toString(acapyResult.invitation_url, {type:'terminal', 'small': true, 'scale': 1}, function (err, url) {
@@ -59,9 +62,9 @@ app.post( '/topic/connections', async ( req, res ) => {
         case "response":  // ping the connection 2.5 and 5 seconds from now and hope it goes active
             console.log('got connection response - set to ping in 5seconds in case does not go active')
             console.log(req.body.connection_id)
-            var acapyRes = setTimeout(postToAcapy, 2500, 'http://localhost:8021/connections/' + req.body.connection_id + '/send-ping',
+            var acapyRes = setTimeout(postToAcapy, 2500, 'http://' + acapy_hostname + '/connections/' + req.body.connection_id + '/send-ping',
                 { "comment": "ping" } )
-            var acapyRes = setTimeout(postToAcapy, 5000, 'http://localhost:8021/connections/' + req.body.connection_id + '/send-ping',
+            var acapyRes = setTimeout(postToAcapy, 5000, 'http://' + acapy_hostname + '/connections/' + req.body.connection_id + '/send-ping',
                 { "comment": "ping" } )
             break
 
@@ -69,7 +72,7 @@ app.post( '/topic/connections', async ( req, res ) => {
             console.log('sending proof request')
             console.log(req.body.connection_id)
             proofReq.connection_id = req.body.connection_id
-            var acapyRes = await postToAcapy('http://localhost:8021/present-proof/send-request', proofReq)
+            var acapyRes = await postToAcapy('http://' + acapy_hostname + '/present-proof/send-request', proofReq)
             break
         }
     console.log( '----------------------------------------------')

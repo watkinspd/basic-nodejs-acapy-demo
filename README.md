@@ -114,3 +114,14 @@
 - Grab your wallet on your smartphone and scan the QR code that shows up in TERM1
 - Watch your wallet for a proof request
 - Watch the magic in TERM1 to see if your proof name and province code is received
+
+## Alternative
+
+- A Dockerfile is included that can run the app.js component in docker
+- The minor potential benefit of this is that it will avoid the need to install nodejs and npm on your local machine
+- To use this edit app.js and set the acapy_hostname to host.docker.internal, then build the docker image
+
+      docker build . -t <yourdockername>/acapynode
+      docker run -p 9090:9090 -d <yourdockername>/acapynode
+
+- Once app.js is running in a docker container go to the logs view to see the console.log output which is where the QR code and the results of the proof request will be shown
