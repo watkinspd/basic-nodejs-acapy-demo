@@ -41,9 +41,17 @@ app.get( '/start/using/consolelog', async ( req, res ) => {
 
     // create a connection invitation
     const acapyRes = await postToAcapy(
-        'http://' + acapy_hostname + '/connections/create-invitation?alias=pdub&auto_accept=true',
-         {})
-    const acapyResult = JSON.parse(acapyRes)
+    'http://' + acapy_hostname + '/out-of-band/create-invitation?alias=pdub&auto_accept=true&multi_use=false',
+        {
+            "accept": [
+              "didcomm/aip1",
+              "didcomm/aip2;env=rfc19"
+            ],
+            "handshake_protocols": [
+              "https://didcomm.org/connections/1.0"
+            ]
+          })    
+         const acapyResult = JSON.parse(acapyRes)
     qrCode.toString(acapyResult.invitation_url, {type:'terminal', 'small': true, 'scale': 1}, function (err, url) {
         console.log(url) })
     // when a user scans this QR code it kicks off a connection
